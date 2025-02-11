@@ -1,0 +1,18 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#view {
+    /* width: 500px;
+    height: 500px;
+    aspect-ratio: 1 / 1; */
+    display: block;
+}
