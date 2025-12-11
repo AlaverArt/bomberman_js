@@ -16,6 +16,8 @@ export default class GameView {
         this.clearView();
         for (const item of state.objectsToRender) {
             this.#canvas.drawImage(...item.getDrawData());
+            this.#canvas.fillStyle = 'black';
+            this.#canvas.strokeRect(...item.getDrawData().slice(5));
         }
     }
 

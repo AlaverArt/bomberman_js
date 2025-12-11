@@ -1,7 +1,6 @@
 import MapObject from './MapObject';
-import { directionToDeltas } from './utils';
 
-export default class Entity {
+export default class Wall {
     /** @type {MapObject} */
     #mapObject;
     #animations;
@@ -14,11 +13,11 @@ export default class Entity {
     constructor({ mapObject, health, speed, isImmortal, animations }) {
         this.#animations = animations;
         this.#mapObject = mapObject ?? new MapObject(0, 0, 0, 0);
-        this.#health = health ?? 0;
+        this.#health = health ?? 1;
         this.#speed = speed ?? 0;
-        this.#isImmortal = isImmortal ?? false;
-        this.#mapObject.setAnimation(animations.stay);
-        this.type = 'entity';
+        this.#isImmortal = isImmortal ?? true;
+        this.type = 'wall';
+        this.stay();
     }
 
     /** @returns {MapObject} */
@@ -26,24 +25,14 @@ export default class Entity {
         return this.#mapObject;
     }
 
-    walk(direction) {
-        this.#mapObject.setMove(directionToDeltas(direction, this.#speed));
-        if (this.direction === direction) {
-            this.#mapObject.animation.play();
-            return;
-        }
-        // console.log('walk', direction);
-        this.direction = direction;
-        this.#mapObject.setAnimation(this.#animations.walk[direction].clone());
-        this.#mapObject.animation.start();
-    }
-
     stay() {
         this.mapObject.setMove({ dx: 0, dy: 0 });
+        this.#mapObject.setAnimation(this.#animations.stay);
+        this.#mapObject.animation.play();
         //this.#mapObject.setAnimation(this.#animations.stay.clone());
         // this.#mapObject.animation.start();
         //this.#mapObject.animation.setFrameIndex(1);
-        this.#mapObject.animation.pause();
+        // this.#mapObject.animation.pause();
     }
 
     tick(time) {
