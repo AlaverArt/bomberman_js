@@ -16,6 +16,8 @@ export default class GameView {
         this.clearView();
         for (const item of state.objectsToRender) {
             this.#canvas.drawImage(...item.getDrawData());
+
+            /** Для дебага обводка вокруг всех объектов */
             this.#canvas.fillStyle = 'black';
             this.#canvas.strokeRect(...item.getDrawData().slice(5));
         }
@@ -28,6 +30,11 @@ export default class GameView {
 
     clearView() {
         this.#canvas.imageSmoothingEnabled = false;
-        this.#canvas.clearRect(0, 0, this.#canvasEl.width, this.#canvasEl.height);
+        this.#canvas.clearRect(
+            0,
+            0,
+            this.#canvasEl.width,
+            this.#canvasEl.height
+        );
     }
 }

@@ -37,6 +37,10 @@ export default class Animation {
         return this.#currentFrame.drawData;
     }
 
+    reset() {
+        this.#progress = 0;
+    }
+
     start() {
         this.#progress = 0;
         this.#isPause = false;

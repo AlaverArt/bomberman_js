@@ -24,7 +24,7 @@ export default class MapBuilder {
             const wallSize = 60;
             for (let i = 1; i <= 4; i++) {
                 for (let j = 1; j <= 4; j++) {
-                    const wallMp = new MapObject((wallSize + wallSize) * i , (wallSize + wallSize) * j, wallSize, wallSize);
+                    const wallMp = new MapObject((wallSize + wallSize) * i + i, (wallSize + wallSize) * j + j, wallSize, wallSize);
                     const wall = new Wall({
                         mapObject: wallMp,
                         animations: this.#sprites.lvl1.wall,

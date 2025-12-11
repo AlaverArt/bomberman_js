@@ -25,6 +25,10 @@ export default class Wall {
         return this.#mapObject;
     }
 
+    get speed() {
+        return this.#speed;
+    }
+
     stay() {
         this.mapObject.setMove({ dx: 0, dy: 0 });
         this.#mapObject.setAnimation(this.#animations.stay);

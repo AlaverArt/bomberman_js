@@ -26,6 +26,10 @@ export default class Entity {
         return this.#mapObject;
     }
 
+    get speed() {
+        return this.#speed;
+    }
+
     walk(direction) {
         this.#mapObject.setMove(directionToDeltas(direction, this.#speed));
         if (this.direction === direction) {
@@ -42,7 +46,8 @@ export default class Entity {
         this.mapObject.setMove({ dx: 0, dy: 0 });
         //this.#mapObject.setAnimation(this.#animations.stay.clone());
         // this.#mapObject.animation.start();
-        //this.#mapObject.animation.setFrameIndex(1);
+        // this.#mapObject.animation.setFrameIndex(1);
+        this.#mapObject.animation.reset();
         this.#mapObject.animation.pause();
     }
 
